@@ -54,19 +54,12 @@ const ADMIN_USER_ID = "REPLACE_THIS_WITH_YOUR_USER_ID"; // Remember to replace t
 // Your web app's Firebase configuration
 
 const firebaseConfig = {
-
-  apiKey: "AIzaSyC4F87md0cSuUVhTzhnPMUtvlqb0273ckE",
-
-  authDomain: "climb-ccny-app.firebaseapp.com",
-
-  projectId: "climb-ccny-app",
-
-  storageBucket: "climb-ccny-app.firebasestorage.app",
-
-  messagingSenderId: "819152854217",
-
-  appId: "1:819152854217:web:2d0dd98c9c35086ba70118"
-
+  apiKey: import.meta.env.VITE_API_KEY,
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_APP_ID
 };
 
 
