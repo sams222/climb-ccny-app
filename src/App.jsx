@@ -47,11 +47,13 @@ IMPORTANT ADMIN STEP!
 5. The Admin Panel will now appear for you.
 ================================================================================
 */
-const ADMIN_USER_ID = "REPLACE_THIS_WITH_YOUR_USER_ID"; // Remember to replace this!
+// Get the string (e.g., "id-1,id-2"), or an empty string if it's not set
+const ADMIN_ID_STRING = import.meta.env.VITE_ADMIN_USER_ID || '';
 
-// --- Firebase Configuration ---
-// This is provided by the environment you are in.
-// Your web app's Firebase configuration
+// Split the string by commas, trim whitespace, and create an array of IDs
+const ADMIN_USER_IDS = ADMIN_ID_STRING.split(',').map(id => id.trim());
+
+
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_API_KEY,
@@ -1259,8 +1261,7 @@ const TutorialModal = ({ isOpen, onClose, isAdmin }) => {
                           Go to the <strong>code for `app.jsx`</strong>.
                         </li>
                         <li>
-                          Find the line `const ADMIN_USER_ID = ...` (around
-                          line 26).
+                          Find the ADMIN_USER_IDS variable in the .env file.
                         </li>
                         <li>
                           Paste your User ID inside the quotes.
@@ -1571,7 +1572,10 @@ export default function App() {
     return () => unsubscribe();
   }, [isAuthReady, userId, db, page]);
 
-  const isAdmin = useMemo(() => userId === ADMIN_USER_ID, [userId]);
+  const isAdmin = useMemo(() => {
+  // Check if a userId exists AND if it's included in our admin list
+  return userId && ADMIN_USER_IDS.includes(userId);
+}, [userId]); // This correctly recalculates only when the user logs in
 
   // ROUTER: Check if we should show the public roster page
   if (page === 'roster' && sessionId) {
