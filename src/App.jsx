@@ -646,7 +646,7 @@ const AdminPanel = ({ db, userId }) => {
           ...doc.data(),
         }));
         setAllSessions(
-          sessionsData.sort((a, b) => b.sessionDate - a.sessionDate)
+          sessionsData.sort((a, b) => b.sessionDate - a.sessionDate
         );
         setLoadingSessions(false);
       },
@@ -1402,12 +1402,12 @@ const TutorialModal = ({ isOpen, onClose, isAdmin }) => {
                         <strong>Create Profile (One Time Only):</strong> The
                         first time you use the app, you'll see a form. Please fill
                         out <strong>all fields</strong> and check the 
-                        <strong>waiver confirmation box</strong>.
+                        <strong> waiver confirmation box</strong>.
                       </li>
                       <li>
                         <strong>IMPORTANT:</strong> Because the sign-in is
                         automatic (and anonymous), your profile is tied to your
-                        <strong>current device and browser</strong>. If you
+                        <strong> current device and browser</strong>. If you
                         use a different device or browser, you will have to
                         create a new profile. Please try to use the same
                         one every week!
