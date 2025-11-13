@@ -15,19 +15,15 @@ VITE_ADMIN_USER_ID=id-abc123,id-def456
 
 Restart the dev server after changing env files.
 
-### Production build / GitHub Pages
+### Production (Vercel)
 
-Create a `.env.production` file at the project root before building/deploying:
+Vercel deploys automatically from the `main` branch. Set environment variables in your Vercel project settings (Environment Variables):
 
 ```
 VITE_ADMIN_USER_ID=id-abc123,id-def456
 ```
 
-Then build and deploy:
-
-```powershell
-npm run predeploy; npm run deploy
-```
+No manual build step is required; Vercel runs `npm install` and `npm run build` by default.
 
 Notes:
 - The app uses Firebase Anonymous Auth; the displayed User ID is the Firebase `uid` for that browser/device.
